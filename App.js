@@ -1,13 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Boton from './Componentes/Boton';
-import { AnimatedCircularProgress } from 'react-native-circular-progress';
-
-import { useState } from 'react';
+import { AnimatedCircularProgress } from 'react-native-circular-progress'; // instalar dependencias necesarias => expo install react-native-circular-progress
+import { useState } from 'react'; 
 
 export default function App() {
 
-  const [contador, setContador] = useState(0);
+  const [contador, setContador] = useState(0);  // define el estado(Actual = 0)con la variable {contador}, setContador es la funciona para actualizar el estado
 
 
   return (
@@ -18,18 +17,18 @@ export default function App() {
         <Text style={styles.titulo}> ¡Bienvenido al contador de unidades!</Text>
 
         <AnimatedCircularProgress
-          size={240}
-          width={20}
-          fill={((contador % 100) / 10) * 10}
-          tintColor="#92E3A9"
-          backgroundColor="#e0e0e0"
-          rotation={-90}
-          arcSweepAngle={180}
-          lineCap="round"
+          size={240} // define el ancho
+          width={20}  // tamaño de la barra
+          fill={((contador % 100))} // cuando el contador llega al equivalente a 100 unidades se reinicia la barra y vuelve a cargar
+          tintColor="#92E3A9" // tono de la barra
+          backgroundColor="#e0e0e0" //tono del fondo
+          rotation={-90} // rotacion de la barra hacia abajo
+          arcSweepAngle={180} // angulo del arco
+          lineCap="round" // bordes redondeados
         >
           {
             () => (
-              <Text style={styles.numero}>{contador}</Text>
+              <Text style={styles.numero}>{contador}</Text> //muestra el valor {contador} justo en el centro del circulo
             )
           }
         </AnimatedCircularProgress>
