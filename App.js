@@ -1,69 +1,58 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import Boton from './Componentes/Boton';
-import { AnimatedCircularProgress } from 'react-native-circular-progress'; // instalar dependencias necesarias => expo install react-native-circular-progress
-import { useState } from 'react'; 
+
+import { useState } from 'react';
 
 export default function App() {
 
   const [contador, setContador] = useState(0);  // define el estado(Actual = 0)con la variable {contador}, setContador es la funciona para actualizar el estado
+
+  const funcionAumentar = () =>{
+    setContador(contador + 1)
+  }
+
+  const funcionReiniciar = () => {
+    setContador(0)
+  }
 
 
   return (
 
 
     <View style={styles.container}>
-      <View style={styles.containerTexto}>
-        <Text style={styles.titulo}> ¡Bienvenido al contador de unidades!</Text>
-
-        <AnimatedCircularProgress
-          size={240} // define el ancho
-          width={20}  // tamaño de la barra
-          fill={((contador % 100))} // cuando el contador llega al equivalente a 100 unidades se reinicia la barra y vuelve a cargar
-          tintColor="#92E3A9" // tono de la barra
-          backgroundColor="#e0e0e0" //tono del fondo
-          rotation={-90} // rotacion de la barra hacia abajo
-          arcSweepAngle={180} // angulo del arco
-          lineCap="round" // bordes redondeados
-        >
-          {
-            () => (
-              <Text style={styles.numero}>{contador}</Text> //muestra el valor {contador} justo en el centro del circulo
-            )
-          }
-        </AnimatedCircularProgress>
-
+      <View style={styles.containerLogo}>
+        <Image style={styles.logo} source={require('./assets/Imagenes/Logo.png')} />
       </View>
 
       <View style={styles.containerBotones}>
+
+        <View style={styles.containerContador}>
+          <Text style={styles.numero}>{contador} </Text>
+
+        </View>
+
+
+
         <Boton
-          boton='-'
-          color='#EEF1FD'
-          colorText='black'
-          onpress={() => {
-            if (contador > 0) setContador(contador - 1)
-          }}
-          ancho='60'
-          alto="60"
+          boton='Clic'
+          color='blue'
+          colorText='white'
+          onpress={funcionAumentar}
+          ancho='205'
+          alto="70"
         />
 
         <Boton
-          boton='↻'
-          color='#E04D62'
-          colorText='black'
-          onpress={() => setContador(0)}
-          ancho='90'
-          alto="90"
+          boton='Reiniciar'
+          color='green'
+          colorText='white'
+          onpress={funcionReiniciar}
+          ancho='205'
+          alto="70"
         />
 
-        <Boton
-          boton='+'
-          color='#EEF1FD'
-          colorText='black'
-          onpress={() => setContador(contador + 1)}
-          ancho='60'
-          alto="60"
-        />
+
       </View>
       <StatusBar style="auto" />
     </View>
@@ -74,37 +63,41 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   containerBotones: {
-    flex: 1,
-    width: '100%',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    paddingTop: 30,
-    backgroundColor: '#0a2342',
-    paddingBottom: 300,
-    paddingLeft: 17
-  },
-
-  containerTexto: {
     flex: 3,
     width: '100%',
+    justifyContent: 'flex-start', // justificar al inicio del view
+    backgroundColor: '#0a0a22',
+    alignItems: 'center'
+  },
+  containerContador: {
+    backgroundColor: '#0a0a22',
+    width: '50%',
+    height: 200,
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'column',
-    paddingTop: 200,
-    backgroundColor: '#0a2342',
+    borderColor: 'white',
+    borderWidth: 5,
+    margin: 10
+
+  },
+
+  containerLogo: {
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    backgroundColor: '#0a0a22',
+    justifyContent: 'flex-end' // alinear al final del view
 
   },
   numero: {
     fontSize: 100,
-    color: 'white'
+    color: 'white',
+    paddingLeft: 20
   },
-  titulo: {
-    fontSize: 20,
-    paddingBottom: 40,
-    color: 'white'
+  logo: {
+    height:80,
+    width: "100%",
   },
 });

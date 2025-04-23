@@ -26,24 +26,22 @@ export default Boton;
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
        
     },
     container2: {
         alignItems: 'center',
-        backgroundColor: '#0a2342',   
-        flexDirection: 'row',   
-        paddingRight: 20  
+        backgroundColor: '#0a0a22',   
     },
     boton: {
-        borderRadius: 50,
-        borderColor: '#EEF1FD',
-        alignItems: 'center',
-        marginVertical: 10,
+        borderRadius: 10,
+        height: 30,
+        borderColor: 'white',
+        borderWidth: 2,
         justifyContent: 'center',
         shadowColor: "white",
+        margin: 5,
         shadowOffset: {
             width: 0,
             height: 9,
