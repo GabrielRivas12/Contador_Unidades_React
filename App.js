@@ -39,8 +39,6 @@ export default function App() {
           color='blue'
           colorText='white'
           onpress={funcionAumentar}
-          ancho='205'
-          alto="70"
         />
 
         <Boton
@@ -48,8 +46,6 @@ export default function App() {
           color='green'
           colorText='white'
           onpress={funcionReiniciar}
-          ancho='205'
-          alto="70"
         />
 
 

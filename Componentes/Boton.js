@@ -7,7 +7,7 @@ function Boton(props) {
          <View style={styles.container}>
             <View style={styles.container2}>  
              <TouchableOpacity style={[
-                 styles.boton, { backgroundColor: props.color}, {width: props.ancho}, {height: props.alto}]}
+                 styles.boton, { backgroundColor: props.color}]}
                  onPress={props.onpress}
 
            >
@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
     },
     boton: {
         borderRadius: 10,
-        height: 30,
+        height: 70,
+        width: 205,
         borderColor: 'white',
         borderWidth: 2,
         justifyContent: 'center',
