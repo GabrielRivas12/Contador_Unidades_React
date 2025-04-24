@@ -1,19 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Alert } from 'react-native';
 import Boton from './Componentes/Boton';
-
+import Contador from './Componentes/NumeroContador';
 import { useState } from 'react';
 
 export default function App() {
 
   const [contador, setContador] = useState(0);  // define el estado(Actual = 0)con la variable {contador}, setContador es la funciona para actualizar el estado
 
-  const funcionAumentar = () =>{
+  const funcionAumentar = () => {
     setContador(contador + 1)
   }
 
   const funcionReiniciar = () => {
     setContador(0)
+  }
+
+  const funcionDecrementar = () => {
+    if (contador > 0) setContador(contador - 1)
+    else
+    Alert.alert("Los numeros negativos no estan permitidos chavalo")
   }
 
 
@@ -28,7 +34,8 @@ export default function App() {
       <View style={styles.containerBotones}>
 
         <View style={styles.containerContador}>
-          <Text style={styles.numero}>{contador} </Text>
+
+          <Contador contador={contador} />  
 
         </View>
 
@@ -46,6 +53,14 @@ export default function App() {
           color='green'
           colorText='white'
           onpress={funcionReiniciar}
+        />
+
+        <Boton
+          boton='Decremetar'
+          color='red'
+          colorText='while'
+          onpress={funcionDecrementar}
+
         />
 
 
@@ -82,7 +97,6 @@ const styles = StyleSheet.create({
   containerLogo: {
     flex: 1,
     width: '100%',
-    alignItems: 'center',
     backgroundColor: '#0a0a22',
     justifyContent: 'flex-end' // alinear al final del view
 
@@ -93,7 +107,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20
   },
   logo: {
-    height:80,
+    height: 80,
     width: "100%",
   },
 });
